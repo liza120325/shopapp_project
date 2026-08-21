@@ -64,7 +64,7 @@ class ProductsDetailsView(DetailView):
     # model = Product
     queryset = Product.objects.prefetch_related('images')
     context_object_name = 'my_product'
-    log.info('visited page product_details')
+
 
 
 class OrderDetailsView(DetailView):
@@ -217,31 +217,6 @@ class OrdersDataExportView(UserPassesTestMixin, View):
 
 
 
-class LatestProductsFeed(Feed):
-    '''Лента новостей'''
-    title = 'Our products'
-    description = 'Updates and changes'
-    link = reverse_lazy('shopapp:products')
-
-    def items(self):
-        '''Метод реализует получение информации о продуктах'''
-        return (Product.objects.all()[:4])
-
-    def item_title(self, item: Product):
-        return item.name
-
-    def item_description(self, item: Product):
-        '''Метод передает краткое инфо(первые 20 символов)
-         о продукте'''
-        return item.description[:20]
-
-    # метод перенесен в модель Product - get_absolute_url
-    # def item_link(self, item):
-    #     '''Метод генерирует ссылку именно для этого элемента'''
-    #     return reverse('shopapp:product_details',
-    #                    kwargs={'pk': item.pk})
-
-
 class UserOrdersListView(LoginRequiredMixin, ListView):
     '''
     Класс для отражения заказов пользователя
@@ -306,6 +281,5 @@ class ExportUserOrders(View):
             order_data = serializer.data
 
             cache.set(cache_key, order_data, 10)
-            print(serializer.data)
 
         return JsonResponse({'orders': order_data})
