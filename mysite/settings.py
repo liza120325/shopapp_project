@@ -58,15 +58,9 @@ INSTALLED_APPS = [
     'django.contrib.admindocs',
     'django.contrib.sitemaps',
 
-    'rest_framework',
     'django_filters',
-    'drf_spectacular',
 
     'shopapp.apps.ShopappConfig',
-    'requestdataapp.apps.RequestdataappConfig',
-    'myauth.apps.MyauthConfig',
-    'myrestapi.apps.MyrestapiConfig',
-    'blogapp.apps.BlogappConfig',
 ]
 
 MIDDLEWARE = [

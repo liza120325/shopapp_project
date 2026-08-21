@@ -4,13 +4,10 @@ from .views import (ShopIndexView, ProductsListView, OrdersListView,
                     ProductsDetailsView, OrderDetailsView,
                     ProductCreateView, ProductUpdateView, OrderCreateView, OrderUpdateView,
                     ProductDeleteView, OrderDeleteView, ProductsDataExportView,
-                    OrdersDataExportView, OrderViewSet, ProductViewSet, LatestProductsFeed,
+                    OrdersDataExportView, LatestProductsFeed,
                     UserOrdersListView, ExportUserOrders)
-from rest_framework.routers import DefaultRouter
 
-routers = DefaultRouter()
-routers.register('productsview', ProductViewSet)
-routers.register('ordersview', OrderViewSet)
+
 
 app_name = 'shopapp'
 urlpatterns = [
@@ -29,7 +26,6 @@ urlpatterns = [
     path('orders/<int:pk>/update/', OrderUpdateView.as_view(), name='update_order'),
     path('orders/<int:pk>/delete/', OrderDeleteView.as_view(), name='delete_order'),
     path('orders-export/', OrdersDataExportView.as_view(), name='orders-export'),
-    path('api/', include(routers.urls)),
     path('products/latest/feed/', LatestProductsFeed(), name='latest'),
 
     path('users/<int:user_pk>/orders/',

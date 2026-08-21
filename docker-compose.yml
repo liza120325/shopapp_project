@@ -1,7 +1,8 @@
 
 services:
-  container_name: shopapp_project
-  web:
+
+  shopapp_project:
+    container_name: shopapp_project
     build:
       context: .       # Указывает, где искать Dockerfile (текущая папка)
       dockerfile: Dockerfile

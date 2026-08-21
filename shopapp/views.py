@@ -13,18 +13,10 @@ from django.http import HttpResponse, HttpRequest, HttpResponseRedirect, JsonRes
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.urls import reverse_lazy
 from django.views import View
-from django.views.decorators.cache import cache_page
 from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
-from rest_framework.request import Request
-from rest_framework.response import Response
-from rest_framework.views import APIView
-from rest_framework.viewsets import ModelViewSet
-from rest_framework.decorators import action
+
 from django.core.cache import cache
-from rest_framework.filters import SearchFilter, OrderingFilter
-from django_filters.rest_framework import DjangoFilterBackend
-from drf_spectacular.utils import extend_schema, OpenApiResponse
-from django.utils.decorators import method_decorator
+
 
 from .models import Product, Order, ProductImage
 from .forms import ProductForm, OrderForm
