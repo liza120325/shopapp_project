@@ -49,7 +49,7 @@ class ProductsListView(ListView):
     log.info('visited page products list')
 
 
-class OrdersListView(LoginRequiredMixin, ListView):
+class OrdersListView(ListView):
     '''Класс по отражению заказов в БД.
     Доступен только авторизованным пользователем (LoginRequiredMixin)'''
     queryset = (Order.objects.select_related('user').prefetch_related('products').all())
@@ -91,27 +91,8 @@ class ProductCreateView(CreateView):
     success_url = reverse_lazy('shopapp:products')
 
 
-class ProductEditPermissionMixin(LoginRequiredMixin):
-    """
-    Миксин проверяет права на редактирование конкретного продукта.
-    """
-    def dispatch(self, request, *args, **kwargs):
-        if request.user.is_superuser:
-            return super().dispatch(request, *args, **kwargs)
 
-        # Получаем объект продукта, который пытаются отредактировать
-        product = self.get_object()
-
-        has_permission = request.user.has_perm('shopapp.change_product')
-        is_author = product.created_by == request.user
-
-        if has_permission and is_author:
-            return super().dispatch(request, *args, **kwargs)
-
-        raise PermissionDenied
-
-
-class ProductUpdateView(ProductEditPermissionMixin, UpdateView):
+class ProductUpdateView(UpdateView):
     model = Product
     # fields = 'name', 'description', 'price', 'amount', 'preview'
     form_class = ProductForm # указываем какая форма используется при обновлении продукта
@@ -217,69 +198,3 @@ class OrdersDataExportView(UserPassesTestMixin, View):
 
 
 
-class UserOrdersListView(LoginRequiredMixin, ListView):
-    '''
-    Класс для отражения заказов пользователя
-    '''
-    template_name = 'shopapp/user_orders.html'
-    context_object_name = 'my_orders'
-
-    owner = None
-
-    def get_queryset(self):
-        # 1. Вытаскиваем 'user.pk' из словаря self.kwargs
-        # Имя ключа должно ОДИН В ОДИН совпадать с переменной в urls.py
-        current_user = self.kwargs.get('user_pk')
-
-        # 2. Проверяем, существует ли вообще такой юзер
-        # Если юзера нет в базе, Django сразу вернет ошибку 404
-        self.owner = get_object_or_404(User, pk=current_user)
-
-        queryset = Order.objects.filter(user=self.owner).prefetch_related(
-            'products'
-        ).order_by('-created_at')
-        print(queryset)
-
-        return queryset
-
-    def get_context_data(self, **kwargs):
-        # Получаем стандартный контекст
-        context = super().get_context_data(**kwargs)
-
-        # 2. Не идем в базу данных повторно!
-        # Просто берем пользователя, которого мы уже сохранили в get_queryset
-        context['selected_user'] = self.owner
-
-        return context
-
-
-class ExportUserOrders(View):
-    ''' Класс экспортирует данные по заказам пользователя '''
-
-    serializer_class = OrderSerializer
-    owner = None
-
-    def get(self, request: HttpRequest, *args, **kwargs) -> JsonResponse:
-        # 1. Вытаскиваем 'user.pk' из словаря self.kwargs
-        # Имя ключа должно ОДИН В ОДИН совпадать с переменной в urls.py
-        current_user = self.kwargs.get('user_pk')
-
-        cache_key = f'export_user_orders_{current_user}'
-        order_data = cache.get(cache_key)
-
-        if order_data is None:
-            # 2. Проверяем, существует ли вообще такой юзер
-            # Если юзера нет в базе, Django сразу вернет ошибку 404
-            self.owner = get_object_or_404(User, pk=current_user)
-
-            queryset = Order.objects.filter(user=self.owner).prefetch_related(
-                'products'
-            ).order_by('pk')
-
-            # Передаем queryset в сериализатор (many=True означает, что это список объектов)
-            serializer = self.serializer_class(queryset, many=True)
-            order_data = serializer.data
-
-            cache.set(cache_key, order_data, 10)
-
-        return JsonResponse({'orders': order_data})
