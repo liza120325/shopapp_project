@@ -1,6 +1,6 @@
 FROM python:3.12
 
-WORKDIR /my_shopapp
+WORKDIR /shopapp_project
 
 
 RUN pip install 'poetry==2.4.1'

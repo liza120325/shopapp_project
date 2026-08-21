@@ -23,7 +23,4 @@ services:
         max-size: "200k"
 
     volumes:
-      - ./media:/media
-
-volumes:
-  media:
+      - ./media:/shopapp_project/media
