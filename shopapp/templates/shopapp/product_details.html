@@ -1,0 +1,47 @@
+{% extends 'shopapp/base.html' %}
+
+{% block title %}
+    Product #{{ my_product.pk }}
+{% endblock %}
+
+{% block body %}
+    <h1>Product <strong>{{ my_product.name }}</strong></h1>
+    <div>
+        <div>Description: <em>{{ my_product.description }}</em></div>
+        <div>Amount: {{ my_product.amount }}</div>
+        <div>Price: {{ my_product.price }}</div>
+        <div>Date produced: {{ my_product.date_produced }}</div>
+        <div>Archived: {{ my_product.archive }}</div>
+
+        {% if my_product.preview %}
+            <img src="{{ my_product.preview.url }}" alt="{{ my_product.preview.name }}">
+        {% endif %}
+
+        <h3>Images:</h3>
+        <div>
+            {% for collect_images in my_product.images.all %}
+                <div>
+                    <img src="{{ collect_images.image.url }}" alt="{{ collect_images.image.name }}">
+                </div>
+                <div>Description of the image: {{ collect_images.description }}</div>
+            {% empty %}
+                <p>No images uploaded yet</p>
+            {% endfor %}
+        </div>
+    </div>
+
+    <hr style="border: none; border-top: 2px dashed #000; height: 0;">
+
+    <div>
+        <a href="{% url 'shopapp:update_product' pk=my_product.pk %}">Update current product</a>
+    </div>
+
+    <div>
+        <a href="{% url 'shopapp:products' %}">Return to products</a>
+    </div>
+
+    <div>
+        <a href="{% url 'shopapp:delete_product' pk=my_product.pk %}">Archive product</a>
+    </div>
+
+{% endblock %}

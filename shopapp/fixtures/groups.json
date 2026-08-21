@@ -1,0 +1,43 @@
+[
+{
+    "model": "auth.group",
+    "fields": {
+        "name": "first_group",
+        "permissions": [
+            [
+                "add_contenttype",
+                "contenttypes",
+                "contenttype"
+            ],
+            [
+                "change_contenttype",
+                "contenttypes",
+                "contenttype"
+            ],
+            [
+                "delete_contenttype",
+                "contenttypes",
+                "contenttype"
+            ],
+            [
+                "view_contenttype",
+                "contenttypes",
+                "contenttype"
+            ]
+        ]
+    }
+},
+{
+    "model": "auth.group",
+    "fields": {
+        "name": "profile_manager",
+        "permissions": [
+            [
+                "view_profile",
+                "myauth",
+                "profile"
+            ]
+        ]
+    }
+}
+]

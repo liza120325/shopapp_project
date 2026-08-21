@@ -1,0 +1,48 @@
+{% extends 'shopapp/base.html' %}
+
+{% block title %}
+    List of orders
+{% endblock %}
+
+
+{% block body %}
+    <h1>Orders:</h1>
+
+    <div>
+        <form method="post">
+            {% csrf_token %}
+
+            {{ order_form.as_p }}
+
+            <button type="submit">
+                Place order
+            </button>
+        </form>
+    </div>
+
+    {% for order in orders %}
+        <div>
+            <p><a href="{% url 'shopapp:order_details' pk=order.pk %}">More details</a></p>
+            <p>Delivery address: {{ order.delivery_address }}</p>
+            <p>User: {% firstof order.user.username order.user.first_name %}</p>
+            <div>
+                Products in order:
+                <ul>
+                    {% for product in order.products.all %}
+                    <li>
+                        {{ product.name }}
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <hr style="border: none; border-top: 2px dashed #000; height: 0;">
+        </div>
+    {% empty %}
+        <p>Список пуст</p>
+    {% endfor %}
+
+    <div>
+        <a href="{% url 'shopapp:place_order' %}">Place new order</a>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'shopapp/base.html' %}
+
+{% block title %}
+    Shopping Site
+{% endblock %}
+
+
+{% block body %}
+
+<h1>Добро пожаловать в наш магазин!</h1>
+<p>Доступные разделы:</p>
+    <ul>
+        {% for page in pages %}
+            <li>
+                <a href="{% url page.url_name %}">{{ page.name }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

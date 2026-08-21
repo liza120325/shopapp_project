@@ -1,0 +1,38 @@
+{% extends 'shopapp/base.html' %}
+{% load cache %}
+
+{% block title %}
+    My orders
+{% endblock %}
+
+{% block body %}
+    <h1>Orders for <strong>{{ selected_user.username }}</strong></h1>
+
+    {# Добавляем selected_user.pk, чтобы кэш создавался уникальным для каждого юзера #}
+    {% cache 60 orders_key selected_user.pk %}
+        {% for order in my_orders %}
+            <div>
+                <div>Delivery address: <em>{{ order.delivery_address }}</em></div>
+                <div>Promocode: {{ order.promocode }}</div>
+                <div>
+                    Products in order:
+                    <ul>
+                        {% for product in order.products.all %}
+                        <li>
+                            {{ product.name }}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div>Is_done: {{ order.is_done }}</div>
+            </div>
+
+            <hr style="border: none; border-top: 2px dashed #000; height: 0;">
+
+        {% empty %}
+            <p>No orders for user {{ selected_user.username }}</p>
+        {% endfor %}
+
+    {% endcache %}
+
+{% endblock %}

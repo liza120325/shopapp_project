@@ -1,0 +1,378 @@
+[
+{
+    "model": "auth.group",
+    "fields": {
+        "name": "first_group",
+        "permissions": [
+            [
+                "add_contenttype",
+                "contenttypes",
+                "contenttype"
+            ],
+            [
+                "change_contenttype",
+                "contenttypes",
+                "contenttype"
+            ],
+            [
+                "delete_contenttype",
+                "contenttypes",
+                "contenttype"
+            ],
+            [
+                "view_contenttype",
+                "contenttypes",
+                "contenttype"
+            ]
+        ]
+    }
+},
+{
+    "model": "auth.group",
+    "fields": {
+        "name": "profile_manager",
+        "permissions": [
+            [
+                "view_profile",
+                "myauth",
+                "profile"
+            ]
+        ]
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$320000$pfMxnPLQqUPLgly3YISWP3$06XqgcggSPHxAple0T1Tat5ecj5orGstPerLHCCNxco=",
+        "last_login": "2026-08-06T11:35:36.479Z",
+        "is_superuser": true,
+        "username": "Elizaveta",
+        "first_name": "Elizaveta",
+        "last_name": "Malysheva",
+        "email": "",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2026-07-13T09:40:29Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$600000$XcsVIFJ9ewPixySMfgHK0o$RHMCJjIBUhI4vkwr3lC9Be+tofkhYqE0iUwkvDRTDQ4=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "Sloth",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-07-20T13:23:40Z",
+        "groups": [
+            [
+                "profile_manager"
+            ]
+        ],
+        "user_permissions": [
+            [
+                "view_logentry",
+                "admin",
+                "logentry"
+            ],
+            [
+                "view_order",
+                "shopapp",
+                "order"
+            ]
+        ]
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$320000$xAyyrtvebtEfjU5gwbtpBb$du4KYdEjlSf/oQ3lDIcel0IkpFfKQ7k0Th/sjrEBIiw=",
+        "last_login": "2026-08-06T11:36:44.360Z",
+        "is_superuser": false,
+        "username": "BilboBaggins",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-08-06T07:59:08Z",
+        "groups": [],
+        "user_permissions": [
+            [
+                "add_product",
+                "shopapp",
+                "product"
+            ],
+            [
+                "change_product",
+                "shopapp",
+                "product"
+            ]
+        ]
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$320000$k5diL95ipUpMf4p4rMHBZk$E1bbLrvHCiw2TP1X6U4/LlmpoLtfXDNk5zb7SHM/cKs=",
+        "last_login": "2026-08-06T08:12:09.834Z",
+        "is_superuser": false,
+        "username": "FrodoBaggins",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-08-06T08:12:08.704Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$320000$sxHQ8on7YQRYBMfb6cnPD0$ErX33+qoz9faFUYROJZ5SxOUU0nHaDhjOqZ7RgtlbVo=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "stesha",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-08-06T08:35:47.684Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$320000$2YKtfJb2osRckiRRB9Ra3X$sdoBfjvKSXPe0Zck3HdEMBQDxGI5QgNUtH+5wZTBw5k=",
+        "last_login": "2026-08-06T08:37:14.655Z",
+        "is_superuser": false,
+        "username": "sam",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-08-06T08:37:13.655Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "shopapp.product",
+    "pk": 2,
+    "fields": {
+        "name": "Strawberry",
+        "description": "Organic, no pesticides, very sweetttt",
+        "price": "188.90",
+        "amount": 200,
+        "date_produced": "2026-07-20T12:09:37.786Z",
+        "archive": false,
+        "created_by": [
+            "Elizaveta"
+        ]
+    }
+},
+{
+    "model": "shopapp.product",
+    "pk": 3,
+    "fields": {
+        "name": "Chocolate White",
+        "description": "Handmade, with love",
+        "price": "300.98",
+        "amount": 200,
+        "date_produced": "2026-07-20T12:09:37.796Z",
+        "archive": false,
+        "created_by": [
+            "Elizaveta"
+        ]
+    }
+},
+{
+    "model": "shopapp.product",
+    "pk": 4,
+    "fields": {
+        "name": "raspberries",
+        "description": "the sweetest",
+        "price": "55.00",
+        "amount": 200,
+        "date_produced": "2026-07-27T09:10:21.954Z",
+        "archive": true,
+        "created_by": [
+            "Elizaveta"
+        ]
+    }
+},
+{
+    "model": "shopapp.product",
+    "pk": 9,
+    "fields": {
+        "name": "chickpeas",
+        "description": "from Turkey",
+        "price": "250.00",
+        "amount": 200,
+        "date_produced": "2026-07-31T04:31:58.777Z",
+        "archive": false,
+        "created_by": [
+            "Elizaveta"
+        ]
+    }
+},
+{
+    "model": "shopapp.product",
+    "pk": 10,
+    "fields": {
+        "name": "Война и мир",
+        "description": "Л.Н. Толстой",
+        "price": "100.00",
+        "amount": 200,
+        "date_produced": "2026-07-31T07:21:22.348Z",
+        "archive": false,
+        "created_by": [
+            "Elizaveta"
+        ]
+    }
+},
+{
+    "model": "shopapp.product",
+    "pk": 11,
+    "fields": {
+        "name": "toy cloud",
+        "description": "fluffy cloud",
+        "price": "200.00",
+        "amount": 200,
+        "date_produced": "2026-08-06T10:57:38.618Z",
+        "archive": false,
+        "created_by": [
+            "Elizaveta"
+        ]
+    }
+},
+{
+    "model": "shopapp.product",
+    "pk": 12,
+    "fields": {
+        "name": "pony",
+        "description": "my little pony",
+        "price": "150.00",
+        "amount": 200,
+        "date_produced": "2026-08-06T11:30:42.480Z",
+        "archive": false,
+        "created_by": [
+            "BilboBaggins"
+        ]
+    }
+},
+{
+    "model": "shopapp.order",
+    "pk": 2,
+    "fields": {
+        "delivery_address": "UAE",
+        "promocode": "",
+        "created_at": "2026-07-20T13:26:00.732Z",
+        "user": [
+            "Sloth"
+        ],
+        "is_done": true,
+        "products": [
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "shopapp.order",
+    "pk": 3,
+    "fields": {
+        "delivery_address": "Omsk",
+        "promocode": "Fresh",
+        "created_at": "2026-07-20T13:26:00.739Z",
+        "user": [
+            "Sloth"
+        ],
+        "is_done": true,
+        "products": [
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "shopapp.order",
+    "pk": 4,
+    "fields": {
+        "delivery_address": "moscow",
+        "promocode": "summer",
+        "created_at": "2026-07-27T10:42:14.418Z",
+        "user": [
+            "Elizaveta"
+        ],
+        "is_done": false,
+        "products": [
+            2
+        ]
+    }
+},
+{
+    "model": "shopapp.order",
+    "pk": 5,
+    "fields": {
+        "delivery_address": "Тверь",
+        "promocode": "лето",
+        "created_at": "2026-07-31T04:38:46.611Z",
+        "user": [
+            "Elizaveta"
+        ],
+        "is_done": false,
+        "products": [
+            4,
+            9
+        ]
+    }
+},
+{
+    "model": "shopapp.order",
+    "pk": 6,
+    "fields": {
+        "delivery_address": "Люберцы",
+        "promocode": "лето2026",
+        "created_at": "2026-07-31T04:42:21.789Z",
+        "user": [
+            "Sloth"
+        ],
+        "is_done": false,
+        "products": [
+            9
+        ]
+    }
+},
+{
+    "model": "shopapp.order",
+    "pk": 7,
+    "fields": {
+        "delivery_address": "msk",
+        "promocode": null,
+        "created_at": "2026-07-31T16:21:20.578Z",
+        "user": [
+            "Sloth"
+        ],
+        "is_done": false,
+        "products": [
+            3,
+            4,
+            9,
+            10
+        ]
+    }
+}
+]

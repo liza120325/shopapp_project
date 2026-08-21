@@ -1,0 +1,107 @@
+[
+{
+    "model": "shopapp.product",
+    "pk": 2,
+    "fields": {
+        "name": "Strawberry",
+        "description": "Organic, no pesticides, very sweetttt",
+        "price": "188.90",
+        "amount": 200,
+        "date_produced": "2026-07-20T12:09:37.786Z",
+        "archive": false,
+        "created_by": [
+            "Elizaveta"
+        ]
+    }
+},
+{
+    "model": "shopapp.product",
+    "pk": 3,
+    "fields": {
+        "name": "Chocolate White",
+        "description": "Handmade, with love",
+        "price": "300.98",
+        "amount": 200,
+        "date_produced": "2026-07-20T12:09:37.796Z",
+        "archive": false,
+        "created_by": [
+            "Elizaveta"
+        ]
+    }
+},
+{
+    "model": "shopapp.product",
+    "pk": 4,
+    "fields": {
+        "name": "raspberries",
+        "description": "the sweetest",
+        "price": "55.00",
+        "amount": 200,
+        "date_produced": "2026-07-27T09:10:21.954Z",
+        "archive": true,
+        "created_by": [
+            "Elizaveta"
+        ]
+    }
+},
+{
+    "model": "shopapp.product",
+    "pk": 9,
+    "fields": {
+        "name": "chickpeas",
+        "description": "from Turkey",
+        "price": "250.00",
+        "amount": 200,
+        "date_produced": "2026-07-31T04:31:58.777Z",
+        "archive": false,
+        "created_by": [
+            "Elizaveta"
+        ]
+    }
+},
+{
+    "model": "shopapp.product",
+    "pk": 10,
+    "fields": {
+        "name": "Война и мир",
+        "description": "Л.Н. Толстой",
+        "price": "100.00",
+        "amount": 200,
+        "date_produced": "2026-07-31T07:21:22.348Z",
+        "archive": false,
+        "created_by": [
+            "Elizaveta"
+        ]
+    }
+},
+{
+    "model": "shopapp.product",
+    "pk": 11,
+    "fields": {
+        "name": "toy cloud",
+        "description": "fluffy cloud",
+        "price": "200.00",
+        "amount": 200,
+        "date_produced": "2026-08-06T10:57:38.618Z",
+        "archive": false,
+        "created_by": [
+            "Elizaveta"
+        ]
+    }
+},
+{
+    "model": "shopapp.product",
+    "pk": 12,
+    "fields": {
+        "name": "pony",
+        "description": "my little pony",
+        "price": "150.00",
+        "amount": 200,
+        "date_produced": "2026-08-06T11:30:42.480Z",
+        "archive": false,
+        "created_by": [
+            "BilboBaggins"
+        ]
+    }
+}
+]
