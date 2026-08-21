@@ -1,0 +1,25 @@
+
+services:
+  container_name: shopapp_project
+  web:
+    build:
+      context: .       # Указывает, где искать Dockerfile (текущая папка)
+      dockerfile: Dockerfile
+    command:
+      - gunicorn
+      - mysite.wsgi:application
+      - --bind
+      - 0.0.0.0:8000
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"    # Пробрасываем порт (из контейнера на виртуальную машину)
+    restart: always    # <-- Вот эта строка перезапустит контейнер при падении
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "2"
+        max-size: "200k"
+
+    volumes:
+      - ./mysite/database:/my_shopapp/database
