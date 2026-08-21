@@ -8,17 +8,6 @@
 {% block body %}
     <h1>Orders:</h1>
 
-    <div>
-        <form method="post">
-            {% csrf_token %}
-
-            {{ order_form.as_p }}
-
-            <button type="submit">
-                Place order
-            </button>
-        </form>
-    </div>
 
     {% for order in orders %}
         <div>
