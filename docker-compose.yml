@@ -23,8 +23,7 @@ services:
         max-size: "200k"
 
     volumes:
-      - ./mysite/database:/my_shopapp/database
-      - django_media:/my_shopapp/media
+      - ./media:/my_shopapp/media
 
 volumes:
   django_media:
